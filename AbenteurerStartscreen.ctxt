@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=AbenteurerStartscreen
+comment1.params=Aktiv\ Breite\ Hoehe
+comment1.target=AbenteurerStartscreen(boolean,\ int,\ int)
+comment2.params=
+comment2.target=void\ act()
+numComments=3

@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Settings
+comment1.params=rBreite\ rHoehe\ Spieler
+comment1.target=Settings(int,\ int,\ int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ showResolution()
+comment4.params=
+comment4.target=void\ prepare()
+comment5.params=
+comment5.target=double\ getFactor()
+comment6.params=
+comment6.target=void\ getScreensize()
+numComments=7

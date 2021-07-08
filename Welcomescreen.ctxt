@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Welcomescreen
+comment1.params=Breitef\ Hoehef\ factorf
+comment1.target=Welcomescreen(int,\ int,\ int)
+comment10.params=
+comment10.target=double\ returniHoehe()
+comment11.params=
+comment11.target=void\ Start()
+comment2.params=
+comment2.target=Welcomescreen()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ addObjectsn()
+comment5.params=
+comment5.target=void\ addObjects()
+comment6.params=
+comment6.target=void\ getScreensize()
+comment7.params=zahl\ divisor
+comment7.target=int\ makeUsable(int,\ int)
+comment8.params=
+comment8.target=void\ showResolution()
+comment9.params=
+comment9.target=void\ Starterfassung()
+numComments=12

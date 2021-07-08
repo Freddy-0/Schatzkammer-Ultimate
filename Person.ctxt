@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Person
+comment1.params=richtung
+comment1.target=void\ move(char)
+comment2.params=
+comment2.target=boolean\ MU()
+comment3.params=
+comment3.target=boolean\ MD()
+comment4.params=
+comment4.target=boolean\ MR()
+comment5.params=
+comment5.target=boolean\ ML()
+comment6.params=
+comment6.target=void\ fangeAbenteurer()
+comment7.params=
+comment7.target=void\ sammeleSchatz()
+numComments=8

@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=MyWorld
+comment1.params=weltbreiteInZelleinheiten\ welthoeheInZelleinheiten\ zelleinheitInPixeln
+comment1.target=MyWorld(int,\ int,\ int)
+comment2.params=cls
+comment2.target=int\ count(java.lang.Class)
+comment3.params=x\ y\ cls
+comment3.target=int\ count(int,\ int,\ java.lang.Class)
+numComments=4

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=resolutionIcon
+comment1.params=
+comment1.target=resolutionIcon()
+comment2.params=factorf
+comment2.target=resolutionIcon(int)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ getScreensize()
+comment5.params=zahl\ divisor
+comment5.target=int\ makeUsable(int,\ int)
+comment6.params=
+comment6.target=double\ getfactor()
+comment7.params=
+comment7.target=double\ giveScale()
+numComments=8
