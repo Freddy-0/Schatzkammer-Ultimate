@@ -5,7 +5,9 @@ public class Waechter extends Person
     String down;
     String left;
     String right;
-    public Waechter(String U, String D, String L, String R){
+    public Waechter(String U, String D, String L, String R,int Spielergroessef){
+        Person(Spielergroessef);
+        getImage().scale(Spielergroesse, Spielergroesse);
         up = U;
         down = D;
         left = L;
@@ -14,16 +16,16 @@ public class Waechter extends Person
     public void act() 
     {
         if(Greenfoot.isKeyDown(up)){
-            move('u');
+            move("u");
         }
         if(Greenfoot.isKeyDown(left)){
-            move('l');
+            move("l");
         }
         if(Greenfoot.isKeyDown(down)){
-            move('d');
+            move("d");
         }
         if(Greenfoot.isKeyDown(right)){
-            move('r');
+            move("r");
         }  
         fangeAbenteurer();        
     }

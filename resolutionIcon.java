@@ -1,52 +1,52 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.awt.*;
 public class resolutionIcon extends Actor
-{   int iBreite = 1260;
-    int iHoehe = 720;
-    int factor;
-    public resolutionIcon(){
+{   int iBreite;
+    int iHoehe;
+    int iSpieler;
+    public resolutionIcon(int Breite, int Hoehe){
+        iBreite = Breite;
+        iHoehe = Hoehe;
         getImage().scale(iBreite / 18, iHoehe / 10);
-        factor = 7;
-        getScreensize();
     }
-    public resolutionIcon(int factorf){
+    
+    public resolutionIcon(int Breite, int Hoehe, int Spieler){
+        iBreite = Breite;
+        iHoehe = Hoehe;
+        iSpieler = Spieler;
         getImage().scale(iBreite / 18, iHoehe / 10);
-        factor = factorf;
-        getScreensize();
     }
 
     public void act(){
         if(Greenfoot.mouseClicked(this)){
-            if(factor < 10){
-                factor++;
-            }else{
-                factor = 7;
+            choseScreenSize();
+            if(getWorld() instanceof Welcomescreen){
+                 Greenfoot.setWorld(new Welcomescreen(iBreite, iHoehe));
+            }else if (getWorld() instanceof Settings){
+                 Greenfoot.setWorld(new Settings(iBreite, iHoehe, iSpieler));
             }
-            getScreensize();
-            Greenfoot.setWorld(new Welcomescreen(iBreite, iHoehe, factor));
         }
     }
-
-    public void getScreensize(){
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Double fBreite = screenSize.getWidth() * factor / 10;
-        Double fHoehe = screenSize.getHeight() * factor / 10;
-        iBreite = makeUsable(fBreite.intValue(), 30);
-        iHoehe = makeUsable(fHoehe.intValue(), 30);
+    
+    
+    public void choseScreenSize(){
+        if(iBreite == 2550){
+            iBreite = 840;
+            iHoehe = 480;
+        }else if(iBreite == 840){
+            iBreite = 1260;
+            iHoehe = 720;
+        }else if(iBreite == 1260){
+            iBreite = 1920;
+            iHoehe = 1080;
+        }else if(iBreite == 1920){
+            iBreite = 2550;
+            iHoehe = 1440;
+        }
     }
     
     public int makeUsable(int zahl, int divisor){        
         int ergebniss = zahl - (zahl % divisor);       
         return ergebniss;
-    } 
+    }  
 
-
-    public double getfactor(){
-        return factor;
-    }
-    
-    public double giveScale(){
-        return 1 * factor;
-    }    
-    
 }

@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Abenteurer
-comment1.params=U\ D\ L\ R
-comment1.target=Abenteurer(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.params=U\ D\ L\ R\ Spielergroessef
+comment1.target=Abenteurer(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int)
 comment2.params=
 comment2.target=void\ act()
 numComments=3

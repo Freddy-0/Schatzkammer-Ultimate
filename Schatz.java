@@ -4,7 +4,7 @@ public class Schatz extends Actor
     public Schatz(int Wandgroesse){
         getImage().scale(Wandgroesse, Wandgroesse);        
     }
-    public void act() 
+    public void kek() 
     {
         for(int i = 0; i < 12; i++){
             if(i >= 0 && i <= 5){

@@ -2,24 +2,29 @@
 import greenfoot.*;
 
 public abstract class Person extends Actor {
-    int Spielergroesse = 30;
+    int Spielergroesse;
     int gesammelteSchaetze = 0;
-    int Offset = Spielergroesse / 2 -2;     
-    int Speed = 4;
-    int Richtungsoffset = Speed + 1;
+    int Offset;     
+    int Speed;
+    int Richtungsoffset;
     private GreenfootSound coinSound = new GreenfootSound("Coins sound.mp3");
-    
-    public void move(char richtung){          
-        if(richtung == 'u' && MU()){
+    public void Person(int Spielergroessef){
+        Spielergroesse = Spielergroessef;
+        Offset = Spielergroesse / 2 -2;
+        Speed = Spielergroesse / 5; 
+        Richtungsoffset  = Speed + 1;
+    }
+    public void move(String richtung){          
+        if(richtung == "u" && MU()){
            setLocation(getX(), getY() - Speed);
         }        
-        if(richtung == 'd' && MD()){
+        if(richtung == "d" && MD()){
            setLocation(getX(), getY() + Speed);
         }
-        if (richtung == 'r' && MR()){
+        if (richtung == "r" && MR()){
             setLocation(getX() + Speed, getY());
         }
-        if(richtung == 'l' && ML()){
+        if(richtung == "l" && ML()){
            setLocation(getX() - Speed, getY());
         }
     }
@@ -72,7 +77,7 @@ public abstract class Person extends Actor {
         if(b != null){
             w.removeObject(b);
             gesammelteSchaetze ++;
-            coinSound.setVolume(15);
+            coinSound.setVolume(10);
             coinSound.play();
         } 
         /*w.showText("Anzahl gesammelte Schätze: " + gesammelteSchaetze, 200, 17);*/

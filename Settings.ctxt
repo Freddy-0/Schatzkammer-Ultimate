@@ -1,15 +1,13 @@
 #BlueJ class context
 comment0.target=Settings
-comment1.params=rBreite\ rHoehe\ Spieler
+comment1.params=Breite\ Hoehe\ Spieler
 comment1.target=Settings(int,\ int,\ int)
 comment2.params=
-comment2.target=void\ act()
+comment2.target=void\ setBackround()
 comment3.params=
-comment3.target=void\ showResolution()
+comment3.target=void\ act()
 comment4.params=
-comment4.target=void\ prepare()
+comment4.target=void\ showResolution()
 comment5.params=
-comment5.target=double\ getFactor()
-comment6.params=
-comment6.target=void\ getScreensize()
-numComments=7
+comment5.target=void\ prepare()
+numComments=6

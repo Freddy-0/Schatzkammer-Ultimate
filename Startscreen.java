@@ -1,21 +1,28 @@
 import greenfoot.  *;
 // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Startscreen extends MyWorld {
-    private GreenfootSound music = new GreenfootSound("Musik.mp3");
     String Startbutton = "enter";
     String Settingsbutton = "escape";
-    int Breite;
-    int Hoehe;
-    int Spielerzahl;
+    int iBreite;
+    int iHoehe;
     boolean infinite = false;
     boolean spielerAngezeigt = false;
-    public Startscreen(int rBreite, int rHoehe, int Spieler) {
-        super(rBreite, rHoehe, 1);
-        Breite = rBreite;
-        Hoehe = rHoehe;
-        Spielerzahl = Spieler;
+    int factor;
+    int iSpieler;
+    public Startscreen(int Breite, int Hoehe) {
+        super(Breite, Hoehe, 1);
+        iBreite = Breite;
+        iHoehe = Hoehe;
+        iSpieler = 2;
         prepare();
-        music.stop();
+    }
+    
+    public Startscreen(int Breite, int Hoehe, int spielerzahl) {
+        super(Breite, Hoehe, 1);
+        iBreite = Breite;
+        iHoehe = Hoehe;
+        iSpieler = spielerzahl;
+        prepare();
     }
     
     private void prepare() {
@@ -24,32 +31,26 @@ public class Startscreen extends MyWorld {
         spielerzahlAnzeigen();
     }
     private void addObjects(){
-        addObject(new HintergrundP(Breite, Hoehe), Breite / 2, Hoehe / 2);
-        addObject(new Schriftzug(Breite, Hoehe), Breite / 2, Hoehe / 2);
-        addObject(new Startaufforderung(Breite, Hoehe, Spielerzahl), Breite / 2, Hoehe / 8   *   7);
-        addObject(new SettingsIcon(Breite, Hoehe), Breite / 16 * 1 , Hoehe / 9   *   1);
+        addObject(new HintergrundP(iBreite, iHoehe), iBreite / 2, iHoehe / 2);
+        addObject(new Schriftzug(iBreite, iHoehe), iBreite / 2, iHoehe / 2);
+        addObject(new Startaufforderung(iBreite, iHoehe), iBreite / 2, iHoehe / 8   *   7);
+        addObject(new SettingsIcon(iBreite, iHoehe, iSpieler), iBreite / 16 * 1 , iHoehe / 9   *   1);
     }    
     private void setVariables(){
-        int Figurenhoehe = Hoehe   /   8   *   6;
-        int Figurenbreite = Breite   /   30;
+        int Figurenhoehe = iHoehe   /   8   *   6;
+        int FigurenBreite = iBreite   /   30;
     }
 
     public void act() {
-        Musik();
         Starterfassung();
         Optionen();
     }
-    public void Musik() {
-        Greenfoot.delay(2);
-        music.setVolume(5);
-        music.playLoop();
-    }
+    
     private void Starterfassung() {
         if (Greenfoot.mouseClicked(Startaufforderung.class))  {
             Start();
         }
         if (Greenfoot.isKeyDown("enter"))  {
-            music.stop();
             Start();
         }
     }
@@ -59,55 +60,52 @@ public class Startscreen extends MyWorld {
     }
     private void Settings() {
         if (Greenfoot.isKeyDown("escape"))  {
-            music.stop();
-            Greenfoot.delay(5);
-            Greenfoot.setWorld(new Settings(Breite, Hoehe, Spielerzahl));
+            Greenfoot.delay(10);
+            Greenfoot.setWorld(new Settings(iBreite, iHoehe, iSpieler));
         }
     }
     private int spielerzahl() {
-        if (Greenfoot.isKeyDown("1") && Spielerzahl != 1 )  {
-            Spielerzahl = 1;
+        if (Greenfoot.isKeyDown("1") && iSpieler != 1 )  {
+            iSpieler = 1;
             spielerzahlAnzeigen();
-        } else if (Greenfoot.isKeyDown("2") && Spielerzahl != 2 )  {
-            Spielerzahl = 2;
+        } else if (Greenfoot.isKeyDown("2") && iSpieler != 2 )  {
+            iSpieler = 2;
             spielerzahlAnzeigen();
-        } else if (Greenfoot.isKeyDown("3") && Spielerzahl != 3 )  {
-            Spielerzahl = 3;
+        } else if (Greenfoot.isKeyDown("3") && iSpieler != 3 )  {
+            iSpieler = 3;
             spielerzahlAnzeigen();
-        } else if (Greenfoot.isKeyDown("4") && Spielerzahl != 4 )  {
-            Spielerzahl = 4;
+        } else if (Greenfoot.isKeyDown("4") && iSpieler != 4 )  {
+            iSpieler = 4;
             spielerzahlAnzeigen();
         }
-        return Spielerzahl;
+        return iSpieler;
     }
     
-    public int setzeSpieler(int Spieler){
-        if(Spielerzahl < 5 && Spielerzahl > 0){
-            Spielerzahl = Spieler;
-        }else{
-            Spielerzahl = 2;
+    public int setzeSpieler(){
+        if(iSpieler > 5 || iSpieler < 0){
+            iSpieler = 2;
         }
         spielerzahlAnzeigen();
-        return Spielerzahl;
+        return iSpieler;
     }
 
     private void spielerzahlAnzeigen() {
-        if (Spielerzahl == 1)  {
+        if (iSpieler == 1)  {
             Spieler1(true);
             Spieler2(false);
             Spieler3(false);
             Spieler4(false);
-        } else if (Spielerzahl == 2)  {
+        } else if (iSpieler == 2)  {
             Spieler1(true);
             Spieler2(true);
             Spieler3(false);
             Spieler4(false);
-        } else if (Spielerzahl == 3)  {
+        } else if (iSpieler == 3)  {
             Spieler1(true);
             Spieler2(true);
             Spieler3(true);
             Spieler4(false);
-        } else if (Spielerzahl == 4)  {
+        } else if (iSpieler == 4)  {
             Spieler1(true);
             Spieler2(true);
             Spieler3(true);
@@ -118,44 +116,43 @@ public class Startscreen extends MyWorld {
 
     public void Spieler1(boolean Aktiv) {
         if (Aktiv)  {
-            addObject(new AbenteurerStartscreen(true , Breite , Hoehe), Breite / 32 * 8 , Hoehe / 18   *   13 );
+            addObject(new AbenteurerStartscreen(true , iBreite , iHoehe), iBreite / 32 * 8 , iHoehe / 18   *   13 );
         } else {
-            addObject(new AbenteurerStartscreen(false, Breite , Hoehe), Breite / 32 * 8 , Hoehe / 18   *   13 );
+            addObject(new AbenteurerStartscreen(false, iBreite , iHoehe), iBreite / 32 * 8 , iHoehe / 18   *   13 );
         }
 
     }
 
     public void Spieler2(boolean Aktiv) {
         if (Aktiv)  {
-            addObject(new WaechterStartscreen(true, Breite , Hoehe), Breite / 32 * 13 , Hoehe / 18   *   13 );
+            addObject(new WaechterStartscreen(true, iBreite , iHoehe), iBreite / 32 * 13 , iHoehe / 18   *   13 );
         } else {
-            addObject(new WaechterStartscreen(false, Breite , Hoehe), Breite / 32 * 13 , Hoehe / 18   *   13 );
+            addObject(new WaechterStartscreen(false, iBreite , iHoehe), iBreite / 32 * 13 , iHoehe / 18   *   13 );
         }
 
     }
 
     public void Spieler3(boolean Aktiv) {
         if (Aktiv)  {
-            addObject(new AbenteurerStartscreen(true, Breite , Hoehe), Breite / 32 * 18 , Hoehe / 18   *   13 );
+            addObject(new AbenteurerStartscreen(true, iBreite , iHoehe), iBreite / 32 * 18 , iHoehe / 18   *   13 );
         } else {
-            addObject(new AbenteurerStartscreen(false, Breite , Hoehe), Breite / 32 * 18 , Hoehe / 18   *   13);
+            addObject(new AbenteurerStartscreen(false, iBreite , iHoehe), iBreite / 32 * 18 , iHoehe / 18   *   13);
         }
 
     }
 
     public void Spieler4(boolean Aktiv) {
         if (Aktiv)  {
-            addObject(new WaechterStartscreen(true, Breite , Hoehe), Breite / 32 * 23 , Hoehe / 18   *   13 );
+            addObject(new WaechterStartscreen(true, iBreite , iHoehe), iBreite / 32 * 23 , iHoehe / 18   *   13 );
         } else {
-            addObject(new WaechterStartscreen(false, Breite , Hoehe), Breite / 32 * 23 , Hoehe / 18   *   13 );
+            addObject(new WaechterStartscreen(false, iBreite , iHoehe), iBreite / 32 * 23 , iHoehe / 18   *   13 );
         }
 
     }
 
     private void Start() {
-        if (Greenfoot.isKeyDown(Startbutton) && Spielerzahl > 0)  {
-            music.stop();
-            Greenfoot.setWorld(new Schatzkammer(Spielerzahl, Breite, Hoehe));
+        if (Greenfoot.isKeyDown(Startbutton) && iSpieler > 0)  {
+            Greenfoot.setWorld(new Schatzkammer(iBreite, iHoehe, iSpieler));
         }
 
     }

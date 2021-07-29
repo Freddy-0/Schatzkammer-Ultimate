@@ -7,11 +7,10 @@ public class Schatzkammer extends MyWorld {
     int Spielergroesse;    
     int Schatzanzahl;    
     int Spielerzahl;
-    private GreenfootSound music = new GreenfootSound("Musik.mp3");
-    public Schatzkammer(int Spieler, int ipBreite, int ipHoehe) {
-        super(ipBreite, ipHoehe, 1);
-        iBreite = ipBreite;
-        iHoehe = ipHoehe;
+    public Schatzkammer(int Breite, int Hoehe, int Spieler){
+        super(Breite, Hoehe, 1);
+        iBreite = Breite;
+        iHoehe = Hoehe;
         Spielerzahl = Spieler;
         prepare();
     }
@@ -19,17 +18,15 @@ public class Schatzkammer extends MyWorld {
     public void prepare() {
         setVariables();
         setBackround();
-        setzeAusenwaende();
         setzeSchaetze();
+        setzeAusenwaende();
         setzeHindernisse();
         setzeSpieler(Spielerzahl);
-        music.setVolume(5);
-        music.playLoop();
     }
     
     public void setVariables(){
-        Wandgroesse = iHoehe / 36;
-        Spielergroesse = iHoehe / 36;
+        Wandgroesse = iHoehe / 30;
+        Spielergroesse = iHoehe / 30;
         Schatzanzahl = iBreite  /  40;
     }
     
@@ -83,42 +80,39 @@ public class Schatzkammer extends MyWorld {
     /*Erstellung der Spieler 1 - 4*/
     public void setzeSpieler(int Tag) {
         if (Tag == 1)  {
-            addObject(new Abenteurer("w","a","s","d"), Spielergroesse / 2 + Wandgroesse - 1, iHoehe - Spielergroesse / 2  -  Wandgroesse  +  1);
-            addObject(new Waechter("up","down","left","right"), iBreite  -  Spielergroesse / 2 - Wandgroesse + 1, Spielergroesse / 2  +  Wandgroesse  -  1 );
+            addObject(new Abenteurer("w","s","a","d",Spielergroesse), Spielergroesse / 2 + Wandgroesse - 1, iHoehe - Spielergroesse / 2  -  Wandgroesse  +  1);
+            addObject(new Waechter("up","down","left","right",Spielergroesse), iBreite  -  Spielergroesse / 2 - Wandgroesse + 1, Spielergroesse / 2  +  Wandgroesse  -  1 );
         } else if (Tag == 2)  {
-            addObject(new Waechter("up","down","left","right"), iBreite  -  Spielergroesse / 2 - Wandgroesse + 1, Spielergroesse / 2  +  Wandgroesse  -  1 );
-            addObject(new Abenteurer("w","a","s","d"), Spielergroesse / 2 + Wandgroesse - 1, iHoehe - Spielergroesse / 2  -  Wandgroesse  +  1);
+            addObject(new Waechter("up","down","left","right",Spielergroesse), iBreite  -  Spielergroesse / 2 - Wandgroesse + 1, Spielergroesse / 2  +  Wandgroesse  -  1 );
+            addObject(new Abenteurer("w","s","a","d",Spielergroesse), Spielergroesse / 2 + Wandgroesse - 1, iHoehe - Spielergroesse / 2  -  Wandgroesse  +  1);
         } else if (Tag == 3)  {
-            addObject(new Abenteurer("w","a","s","d"), Spielergroesse / 2 + Wandgroesse - 1, iHoehe - Spielergroesse / 2  -  Wandgroesse  +  1);
-            addObject(new Waechter("up","down","left","right"), iBreite  -  Spielergroesse / 2 - Wandgroesse + 1, Spielergroesse / 2  +  Wandgroesse  -  1 );
-            addObject(new Abenteurer("8","5","4","6"), Spielergroesse / 2 + Wandgroesse - 1 , Spielergroesse / 2  +  Wandgroesse  -  1);
+            addObject(new Abenteurer("w","s","a","d",Spielergroesse), Spielergroesse / 2 + Wandgroesse - 1, iHoehe - Spielergroesse / 2  -  Wandgroesse  +  1);
+            addObject(new Waechter("up","down","left","right",Spielergroesse), iBreite  -  Spielergroesse / 2 - Wandgroesse + 1, Spielergroesse / 2  +  Wandgroesse  -  1 );
+            addObject(new Abenteurer("8","5","4","6",Spielergroesse), Spielergroesse / 2 + Wandgroesse - 1 , Spielergroesse / 2  +  Wandgroesse  -  1);
         } else if (Tag == 4)  {
-            addObject(new Abenteurer("w","a","s","d"), Spielergroesse / 2 + Wandgroesse - 1, iHoehe - Spielergroesse / 2  -  Wandgroesse  +  1);
-            addObject(new Waechter("up","down","left","right"), iBreite  -  Spielergroesse / 2 - Wandgroesse + 1, Spielergroesse / 2  +  Wandgroesse  -  1 );
-            addObject(new Abenteurer("8","5","4","6"), Spielergroesse / 2 + Wandgroesse - 1 , Spielergroesse / 2  +  Wandgroesse  -  1);
-            addObject(new Waechter("i","k","j","l"), iBreite  -  Spielergroesse / 2 - Wandgroesse + 1 , iHoehe - Spielergroesse / 2  -  Wandgroesse  +  1);
+            addObject(new Abenteurer("w","s","a","d",Spielergroesse), Spielergroesse / 2 + Wandgroesse - 1, iHoehe - Spielergroesse / 2  -  Wandgroesse  +  1);
+            addObject(new Waechter("up","down","left","right",Spielergroesse), iBreite  -  Spielergroesse / 2 - Wandgroesse + 1, Spielergroesse / 2  +  Wandgroesse  -  1 );
+            addObject(new Abenteurer("8","5","4","6",Spielergroesse), Spielergroesse / 2 + Wandgroesse - 1 , Spielergroesse / 2  +  Wandgroesse  -  1);
+            addObject(new Waechter("i","k","j","l",Spielergroesse), iBreite  -  Spielergroesse / 2 - Wandgroesse + 1 , iHoehe - Spielergroesse / 2  -  Wandgroesse  +  1);
         }
 
     }
 
     /*verschiedene möglichkeiten wie das spiel beendet wird*/
     public void spielEndet() {
-        if (Greenfoot.isKeyDown("escape"))  {
+        if(Greenfoot.isKeyDown("escape"))  {
             Greenfoot.setWorld(new Startscreen(iBreite, iHoehe, Spielerzahl));
-            music.stop();
         }
 
-        if (count(Schatz.class) <= 2)  {
+        if(count(Schatz.class) <= 2)  {
             addObject(new AbenteurerWin(), iBreite / 2 , iHoehe / 2);
             Greenfoot.delay(80);
-            music.stop();
             Greenfoot.setWorld(new Startscreen(iBreite, iHoehe, Spielerzahl));
         }
 
-        if (count(Abenteurer.class) == 0)  {
+        if(count(Abenteurer.class) == 0)  {
             addObject(new WaechterWin(), iBreite / 2 , iHoehe / 2 );
             Greenfoot.delay(80);
-            music.stop();
             Greenfoot.setWorld(new Startscreen(iBreite, iHoehe, Spielerzahl));
         }
 
@@ -127,15 +121,15 @@ public class Schatzkammer extends MyWorld {
     public void schatzkisteAktualisieren() {
         int Schätze = count(Schatz.class);
         if (Schätze <= Schatzanzahl && count(Schatzkiste.class) < 1)  {
-            addObject(new Schatzkiste(Wandgroesse), Wandgroesse / 2, Wandgroesse / 2);
+            addObject(new Schatzkiste(Wandgroesse,1), Wandgroesse / 2, Wandgroesse / 2);
         }
 
-        if (Schätze < Schatzanzahl  /  2&& count(Schatzkistemittel.class) < 1)  {
-            addObject(new Schatzkistemittel(Wandgroesse), Wandgroesse / 2, Wandgroesse / 2);
+        if (Schätze < Schatzanzahl  /  2 && count(Schatzkiste.class) < 2)  {
+            addObject(new Schatzkiste(Wandgroesse,2), Wandgroesse / 2, Wandgroesse / 2);
         }
 
-        if (Schätze < 4 && count(Schatzkistevoll.class) < 1)  {
-            addObject(new Schatzkistevoll(Wandgroesse), Wandgroesse / 2, Wandgroesse / 2);
+        if (Schätze < 4 && count(Schatzkiste.class) < 3)  {
+            addObject(new Schatzkiste(Wandgroesse,3), Wandgroesse / 2, Wandgroesse / 2);
         }
 
     }
